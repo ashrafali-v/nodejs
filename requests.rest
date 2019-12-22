@@ -1,0 +1,12 @@
+GET http://localhost:3025/api/user
+
+###
+
+POST http://localhost:3025/api/user/register
+content-type: application/json
+
+{
+    "name": "Lio123",
+    "email": "messi@gmail.com",
+    "password":"leo"
+}
