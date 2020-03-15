@@ -3,9 +3,40 @@ const User = require('../model/User');
 const { registerValidation } = require('../validation');
 
 router.get('/', async (req, res) => {
+    //res.send("hiiii");
     try {
         const users = await User.find();
         res.json(users);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+router.get('/:userId', async (req, res) => {
+    //res.send("hiiii");
+    try {
+        const user = await User.findById(req.params.userId);
+        res.json(user);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+router.delete('/:userId', async (req, res) => {
+    //res.send("hiiii");
+    try {
+        const user = await User.remove({_id:req.params.userId});
+        res.json(user);
+    } catch (err) {
+        res.status(400).send(err);
+    }
+});
+router.patch('/:userId', async (req, res) => {
+    //res.send("hiiii");
+    try {
+        const updatedUser = await User.updateOne(
+            {_id:req.params.userId},
+            {$set:{name:req.body.name}}
+        );
+        res.json(updatedUser);
     } catch (err) {
         res.status(400).send(err);
     }

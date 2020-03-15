@@ -1,12 +1,20 @@
-GET http://localhost:3025/api/user
+GET http://localhost:3027/api/user
+
+###
+GET http://localhost:3027/api/user/5dff45aef231a43d88b4007e
+
 
 ###
 
-POST http://localhost:3025/api/user/register
+POST http://localhost:3027/api/user/add
 content-type: application/json
 
 {
-    "name": "Lio123",
-    "email": "messi@gmail.com",
-    "password":"leo"
+    "name": "Lio messi122",
+    "email": "leos@gmail22.com",
+    "password":"leo1234"
 }
+
+###
+
+DELETE http://localhost:3027/api/user/5e115a95fa8b8f61d0bf1584

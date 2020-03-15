@@ -2,13 +2,14 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
 //Import Routes
-const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/user');
-const postRoutes = require('./routes/post');
+// const authRoutes = require('./routes/auth');
+// const userRoutes = require('./routes/user');
+// const postRoutes = require('./routes/post');
+
+
 dotenv.config();
 
 //Connect to DB
@@ -19,10 +20,11 @@ mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true, useNewUrlPa
 
 //Route Middlewares
 app.use(express.json());
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/post', postRoutes);
+//app.use('/api/auth', authRoutes);
+//app.use('/api/user', userRoutes);
+//app.use('/api/post', postRoutes);
 
-
+require('./router')(app);
 //start listening the server
-app.listen(3025, () => console.log('Server is Up and running'));
+app.listen(3027, () => console.log('Server is Up and running'+ __dirname));
+module.exports = app;
