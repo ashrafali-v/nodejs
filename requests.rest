@@ -1,4 +1,14 @@
 GET http://localhost:3027/api/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQmluc2hpZGhhIGsiLCJpYXQiOjE1ODU0MDQ1MjB9.ly40HdCJhQC3ibrkJumAbBLYanaBYKlpS-_eyy2wNCA
+###
+
+POST http://localhost:3027/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"Binshidha k"
+}
+
 
 ###
 GET http://localhost:3027/api/user/5dff45aef231a43d88b4007e

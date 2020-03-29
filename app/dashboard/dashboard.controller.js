@@ -4,7 +4,7 @@ const User = require('../model/User');
 const advocates = async (req,res) => {
     //res.send("hiiii");
     try {
-        const users = await dashServ.advocatesList();
+        const users = await dashServ.advocatesList(req);
         return (res.status(200).send(users));
     } catch (err) {
         res.status(400).send(err);
