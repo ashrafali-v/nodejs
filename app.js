@@ -20,12 +20,18 @@ mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true, useNewUrlPa
 
 //Route Middlewares
 app.use(express.json());
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+    //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.post('/login',(req,res)=>{
     const username = req.body.name;
     console.log(username);
     const user ={name:username};
 
     const accessToken =     jwt.sign(user,process.env.ACCESS_TOKEN_SECRET);
+    res.write
     res.json({ accessToken:accessToken });
 
 })

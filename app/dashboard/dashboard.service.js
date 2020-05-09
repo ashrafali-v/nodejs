@@ -1,8 +1,8 @@
 const User = require('../model/User');
 const { registerValidation } = require('../../validation');
 const advocatesList = async (req) => {   
-     //const users = await User.find();
-     const users = await User.findOne({name:req.user});
+     const users = await User.find();
+     //const users = await User.findOne({name:req.user});
      return users;
   
 };
