@@ -53,5 +53,5 @@ app.use("/api/user", userRoutes);
 require("./router")(app);
 //start listening the server
 const port = process.env.PORT || 3027;
-app.listen(port, () => console.log("Server is Up and running" + __dirname));
+app.listen(3027, () => console.log("Server is Up and running" + __dirname));
 module.exports = app;
