@@ -3,14 +3,13 @@ const User = require("../app/model/User");
 const { registerValidation } = require("../validation");
 
 router.get("/", async (req, res) => {
-  res.send("hiiii");
-  // try {
-  //   console.log("Hi");
-  //   const users = await User.find();
-  //   res.json(users);
-  // } catch (err) {
-  //   res.status(400).send(err);
-  // }
+  try {
+    console.log("Hi");
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 });
 router.get("/:userId", async (req, res) => {
   //res.send("hiiii");
