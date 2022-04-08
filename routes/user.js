@@ -4,6 +4,7 @@ const { registerValidation } = require("../validation");
 
 router.get("/", async (req, res) => {
   try {
+    console.log("Hi");
     const users = await User.find();
     res.json(users);
   } catch (err) {
