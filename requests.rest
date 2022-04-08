@@ -1,4 +1,6 @@
-GET http://localhost:3027/api/user
+GET http://localhost:3027/api/user/
+
+
 //Authorization: Bearer a8b0d46803555151326d339aed83ab585e1e79ee96e7e143685130d0a348e7e543e2548f25bad03bad0c5eabb50bc8caaf6fec301b1f05e38bfbfe90725c90d3
 ###
 
@@ -11,7 +13,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3027/api/user/5dff45aef231a43d88b4007e
+GET http://localhost:3027/api/user/62490e4b68a25c2a367057eb
 
 
 ###
