@@ -13,16 +13,38 @@ const userRoutes = require("./routes/user");
 dotenv.config();
 app.use(bodyParser.json());
 //Connect to DB
-mongoose.connect(
-  process.env.DB_CONNECT,
-  { useUnifiedTopology: true, useNewUrlParser: true },
-  () => console.log("DB connected")
-);
+
+async function start() {
+  console.log(process.env.DB_CONNECT);
+  try {
+    mongoose.connect(
+      process.env.DB_CONNECT,
+      { useUnifiedTopology: true, useNewUrlParser: true },
+      () => console.log("DB connected123")
+    );
+    //app.listen(PORT, () => console.log(`app has been started ${PORT}...`));
+    const port = process.env.PORT || 3027;
+    //app.listen(3027,console.log("Server is Up and running" + __dirname));
+
+    app.listen(port, function (err) {
+      if (err) console.log("Error in server setup");
+      console.log("Server is Up and running");
+    });
+  } catch (e) {
+    console.log("Server Error", e.message);
+    process.exit(1);
+  }
+}
+start();
 
 //Route Middlewares
 app.use(express.json());
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Origin",
+    "http://localhost:3000",
+    "http://localhost:3027"
+  ); // update to match the domain you will make the request from
   //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -48,15 +70,9 @@ app.post("/login", (req, res) => {
 // }
 //app.use('/api/auth', authRoutes);
 app.use("/api/user", userRoutes);
-//app.use('/api/post', postRoutes);
+//app.use("/api/post", postRoutes);
 
 require("./router")(app);
 //start listening the server
-const port = process.env.PORT || 3027;
-//app.listen(3027,console.log("Server is Up and running" + __dirname));
 
-app.listen(port, function (err) {
-  if (err) console.log("Error in server setup");
-  console.log("Server is Up and running");
-});
 module.exports = app;

@@ -5,7 +5,6 @@ const { registerValidation } = require("../validation");
 router.get("/", async (req, res) => {
   //res.send("hiiii12345");
   try {
-    console.log("Hi");
     const users = await User.find();
     res.json(users);
   } catch (err) {
