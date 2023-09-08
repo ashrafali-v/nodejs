@@ -15,17 +15,13 @@ app.use(bodyParser.json());
 //Connect to DB
 
 async function start() {
-  console.log(process.env.DB_CONNECT);
   try {
     mongoose.connect(
       process.env.DB_CONNECT,
       { useUnifiedTopology: true, useNewUrlParser: true },
       () => console.log("DB connected123")
     );
-    //app.listen(PORT, () => console.log(`app has been started ${PORT}...`));
     const port = process.env.PORT || 3027;
-    //app.listen(3027,console.log("Server is Up and running" + __dirname));
-
     app.listen(port, function (err) {
       if (err) console.log("Error in server setup");
       console.log("Server is Up and running");
@@ -51,7 +47,6 @@ app.use(function (req, res, next) {
 });
 app.post("/login", (req, res) => {
   const username = req.body.name;
-  console.log(username);
   const user = { name: username };
 
   const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
@@ -69,6 +64,7 @@ app.post("/login", (req, res) => {
 //         next()
 //     })
 // }
+
 //app.use('/api/auth', authRoutes);
 app.use("/api/user", userRoutes);
 //app.use("/api/post", postRoutes);
