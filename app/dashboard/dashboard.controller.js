@@ -5,7 +5,7 @@ const advocates = async (req,res) => {
     //res.send("hiiii");
     try {
         const users = await dashServ.advocatesList(req);
-        return (res.status(200).send(users));
+        return (res.status(200).json(users));
     } catch (err) {
         res.status(400).send(err);
     }
@@ -13,8 +13,8 @@ const advocates = async (req,res) => {
 const advocate = async (req,res) => {
     //res.send("hiiii");
     try {
-        const users = await dashServ.advocate(req);
-        return (res.status(200).send(users));
+        const user = await dashServ.advocate(req);
+        return (res.status(200).send(user));
     } catch (err) {
         res.status(400).send(err);
     }

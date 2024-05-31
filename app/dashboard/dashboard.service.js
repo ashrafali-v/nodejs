@@ -9,8 +9,8 @@ const advocatesList = async (req) => {
 
 const advocate = async (req) => {
     //res.send("hiiii");   
-      const users = await User.findById(req.params.userId);
-      return users;
+      const user = await User.findById(req.params.userId);
+      return user;
   
 };
 const advocateDelete = async (req) => {
